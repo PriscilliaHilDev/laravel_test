@@ -1,14 +1,17 @@
 import defaultTheme from 'tailwindcss/defaultTheme';
 import forms from '@tailwindcss/forms';
 import typography from '@tailwindcss/typography';
+import flowbite from "flowbite/plugin";
 
 /** @type {import('tailwindcss').Config} */
 export default {
+    darkMode: 'media', // ou 'media' si tu veux que ça suive les préférences système
     content: [
         './vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php',
         './vendor/laravel/jetstream/**/*.blade.php',
         './storage/framework/views/*.php',
         './resources/views/**/*.blade.php',
+         "./node_modules/flowbite/**/*.js"
     ],
 
     theme: {
@@ -19,9 +22,9 @@ export default {
             colors: {
                 primary: '#1E40AF',
                 secondary: '#9333EA',
-            },Ò
+            },
         },
     },
 
-    plugins: [forms, typography],
+    plugins: [forms, typography, flowbite],
 };
