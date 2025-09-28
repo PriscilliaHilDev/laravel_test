@@ -15,26 +15,30 @@
 
     @auth
         <form wire:submit.prevent="reserve" class="space-y-6">
-            {{-- Datepicker TallStack UI (MODE RANGE) --}}
-         <x-date
-    label="Période de séjour"
-    placeholder="Choisissez vos dates"
-    hint="Sélectionnez une période"
-    range
-    parse-format="Y-m-d"      {{-- ce que Livewire reçoit --}}
-    display-format="d/m/Y"    {{-- ce que l’utilisateur voit --}}
-    wire:model="dates"
-    :disable="$unavailableDates"   {{-- <-- désactive les jours réservés --}}
-/>
-            {{-- Erreurs --}}
-           {{-- Affiche bien les erreurs remontées --}}
-@error('start_date') <p class="text-sm text-red-600">{{ $message }}</p> @enderror
-@error('end_date')   <p class="text-sm text-red-600">{{ $message }}</p> @enderror
+            {{-- Datepicker TallStackUI (mode range) --}}
+            <x-ts-date
+                label="Période de séjour"
+                name="dates"                {{-- <- important pour la gestion auto des erreurs --}}
+                placeholder="Choisissez vos dates"
+                hint="Sélectionnez une période"
+                range
+                parse-format="Y-m-d"        {{-- ce que Livewire reçoit --}}
+                display-format="d/m/Y"      {{-- ce que l’utilisateur voit --}}
+                wire:model="dates"
+                :disable="$unavailableDates"   {{-- désactive les jours réservés --}}
+            />
 
-            <button type="submit"
-                    class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">
+            {{-- Erreurs personnalisées si besoin --}}
+            @error('start_date')
+                <p class="text-sm text-red-600">{{ $message }}</p>
+            @enderror
+            @error('end_date')
+                <p class="text-sm text-red-600">{{ $message }}</p>
+            @enderror
+
+            <x-ts-button type="submit" class="w-full">
                 Réserver ce bien
-            </button>
+            </x-ts-button>
         </form>
     @else
         <p class="text-red-500 mt-4">Connectez-vous pour réserver ce bien.</p>
