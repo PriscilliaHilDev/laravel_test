@@ -8,7 +8,6 @@
                 <div class="shrink-0 flex items-center">
                     <a href="{{ url('/') }}" 
                        class="text-lg font-bold text-gray-900 dark:text-gray-100">
-                        {{-- Logo de ton agence --}}
                         Azuréa IMMO
                     </a>
                 </div>
@@ -19,10 +18,12 @@
                                 :active="request()->routeIs('properties.index')">
                         {{ __('Biens') }}
                     </x-nav-link>
-                    <x-nav-link href="{{ route('bookings.index') }}" 
-                                :active="request()->routeIs('bookings.index')">
-                        {{ __('Réservations') }}
-                    </x-nav-link>
+                    @auth
+                        <x-nav-link href="{{ route('user.bookings') }}" 
+                                    :active="request()->routeIs('user.bookings')">
+                            {{ __('Mes réservations') }}
+                        </x-nav-link>
+                    @endauth
                 </div>
             </div>
 
@@ -106,10 +107,12 @@
                                    :active="request()->routeIs('properties.index')">
                 {{ __('Biens') }}
             </x-responsive-nav-link>
-            <x-responsive-nav-link href="{{ route('bookings.index') }}" 
-                                   :active="request()->routeIs('bookings.index')">
-                {{ __('Réservations') }}
-            </x-responsive-nav-link>
+            @auth
+                <x-responsive-nav-link href="{{ route('user.bookings') }}" 
+                                       :active="request()->routeIs('user.bookings')">
+                    {{ __('Mes réservations') }}
+                </x-responsive-nav-link>
+            @endauth
         </div>
 
         <!-- Responsive Settings Options -->
