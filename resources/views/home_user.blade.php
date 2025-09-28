@@ -5,15 +5,18 @@
         <section class="flex flex-col lg:flex-row items-center justify-center gap-12">
             <div class="flex-1">
                 <h1 class="text-4xl font-extrabold tracking-tight sm:text-5xl text-gray-900 dark:text-gray-100">
-                    Bienvenue {{ Auth::user()->name }} 👋
+                    Bienvenue 👋
                 </h1>
                 <p class="mt-4 text-lg text-gray-600 dark:text-gray-300">
                     Retrouvez facilement votre prochain logement de vacances ou de travail.  
                     Gérez vos réservations en toute simplicité et profitez d'une expérience fluide et sécurisée.  
                 </p>
-               
+                  <a href="{{ route('properties.index') }}"
+                    class="mt-6 inline-flex items-center rounded-lg bg-blue-600 px-6 py-3 text-lg font-medium text-white 
+                      hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 transition">
+                    Voir les biens disponibles
+                </a>
             </div>
-
             <!-- Carousel -->
             <aside class="flex-1 w-full lg:block">
                 <section id="user-carousel" class="relative h-[300px] rounded-2xl overflow-hidden" data-carousel="slide">
@@ -61,16 +64,12 @@
         </section>
 
         <!-- CTA final -->
-        <section class="text-center py-12">
+        <section class="text-center py-4">
             <h2 class="text-3xl font-extrabold text-gray-900 dark:text-gray-100">Prêt à réserver votre prochain séjour ?</h2>
             <p class="mt-4 text-lg text-gray-600 dark:text-gray-300">
                 Découvrez nos propriétés et vivez une expérience simple et agréable.
             </p>
-            <a href="{{ route('properties.index') }}"
-               class="mt-6 inline-flex items-center rounded-lg bg-blue-600 px-6 py-3 text-lg font-medium text-white 
-                      hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 transition">
-                Voir les biens disponibles
-            </a>
+          
         </section>
     </main>
 </x-app-layout>
