@@ -2,23 +2,30 @@
 
 namespace App\Models;
 
-use App\Models\Booking;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Property extends Model
 {
-     use HasFactory;
+    use HasFactory;
 
-    // Colonnes que l'on autorise au remplissage
+    /**
+     * Colonnes autorisées au remplissage.
+     *
+     * @var array<int, string>
+     */
     protected $fillable = [
         'name',
         'description',
         'price_per_night',
+        'image', // si tu ajoutes un champ image
     ];
 
-    // Relations
-    public function bookings()
+    /**
+     * Relation : un bien peut avoir plusieurs réservations.
+     */
+    public function bookings(): HasMany
     {
         return $this->hasMany(Booking::class);
     }

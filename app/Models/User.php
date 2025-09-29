@@ -2,27 +2,25 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
-use App\Models\Booking;
-use Laravel\Sanctum\HasApiTokens;
-use Laravel\Jetstream\HasProfilePhoto;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Fortify\TwoFactorAuthenticatable;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Foundation\Auth\User as Authenticatable;
+use Laravel\Jetstream\HasProfilePhoto;
+use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class User extends Authenticatable
 {
     use HasApiTokens;
-
-    /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory;
     use HasProfilePhoto;
     use Notifiable;
     use TwoFactorAuthenticatable;
 
     /**
-     * The attributes that are mass assignable.
+     * Attributs remplissables en masse.
      *
      * @var array<int, string>
      */
@@ -30,10 +28,11 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'role_id', // gestion des rôles
     ];
 
     /**
-     * The attributes that should be hidden for serialization.
+     * Attributs cachés lors de la sérialisation.
      *
      * @var array<int, string>
      */
@@ -45,16 +44,7 @@ class User extends Authenticatable
     ];
 
     /**
-     * The accessors to append to the model's array form.
-     *
-     * @var array<int, string>
-     */
-    protected $appends = [
-        'profile_photo_url',
-    ];
-
-    /**
-     * Get the attributes that should be cast.
+     * Attributs castés.
      *
      * @return array<string, string>
      */
@@ -66,9 +56,28 @@ class User extends Authenticatable
         ];
     }
 
-    // Relations 
-    public function bookings()
+    /**
+     * Accessors à ajouter à l’array form.
+     *
+     * @var array<int, string>
+     */
+    protected $appends = [
+        'profile_photo_url',
+    ];
+
+    /**
+     * Relation : un utilisateur peut avoir plusieurs réservations.
+     */
+    public function bookings(): HasMany
     {
         return $this->hasMany(Booking::class);
+    }
+
+    /**
+     * Relation : un utilisateur appartient à un rôle.
+     */
+    public function role(): BelongsTo
+    {
+        return $this->belongsTo(Role::class);
     }
 }

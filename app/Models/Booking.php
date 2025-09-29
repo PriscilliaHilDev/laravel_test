@@ -2,16 +2,19 @@
 
 namespace App\Models;
 
-use App\Models\User;
-use App\Models\Property;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Booking extends Model
 {
-     use HasFactory;
+    use HasFactory;
 
-    // Colonnes que l'on autorise au remplissage
+    /**
+     * Les colonnes que l'on autorise au remplissage.
+     *
+     * @var array<int, string>
+     */
     protected $fillable = [
         'user_id',
         'property_id',
@@ -19,13 +22,18 @@ class Booking extends Model
         'end_date',
     ];
 
-    // Relations
-    public function user()
+    /**
+     * Relation : une réservation appartient à un utilisateur.
+     */
+    public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
     }
 
-    public function property()
+    /**
+     * Relation : une réservation appartient à un bien.
+     */
+    public function property(): BelongsTo
     {
         return $this->belongsTo(Property::class);
     }
