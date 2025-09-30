@@ -1,24 +1,51 @@
+# Logs & system files
 *.log
 .DS_Store
+Thumbs.db
+
+# Environnements
 .env
 .env.backup
 .env.production
+
+# IDE / Editors
 .phpactor.json
-.phpunit.result.cache
 /.fleet
 /.idea
 /.nova
-/.phpunit.cache
 /.vscode
 /.zed
-/auth.json
+
+# PHPUnit cache
+.phpunit.result.cache
+/.phpunit.cache
+
+# Node
 /node_modules
-/public/build
-/public/hot
-/public/storage
+
+# Composer vendor
+/vendor
+
+# Laravel caches & keys
 /storage/*.key
 /storage/pail
-/vendor
+/storage/framework/*
+/storage/logs
+/bootstrap/cache/*.php
+
+# Public assets (compilés par Vite / Mix / Tailwind / Filament)
+public/build
+public/hot
+public/storage
+public/css
+public/js
+public/mix-manifest.json
+/public/vendor/filament
+
+# Homestead & divers
 Homestead.json
 Homestead.yaml
-Thumbs.db
+
+# Auth config privé
+/auth.json
+
