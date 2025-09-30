@@ -25,7 +25,6 @@ class PropertiesTable
                     ->disk('public')
                     ->visibility('public')
                     ->square()
-                    ->size(48) // height() est déprécié
                     ->extraImgAttributes(['class' => 'object-cover object-center rounded'])
                     ->defaultImageUrl(asset('images/properties/default.png'))
                     ->url(fn ($record) => PropertyResource::getUrl('view', ['record' => $record])), // clic vers la page "View"
