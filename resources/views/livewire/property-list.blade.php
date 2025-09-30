@@ -33,7 +33,7 @@
                             </a>
                         </h2>
 
-                        <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">
+                        <p class="mt-2 text-base text-gray-600 dark:text-gray-400">
                             {{ \Illuminate\Support\Str::limit($property->description, 100) }}
                         </p>
 

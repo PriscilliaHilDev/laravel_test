@@ -17,7 +17,7 @@
 
         <!-- Mentions -->
         <p class="text-xs text-gray-500 dark:text-gray-400">
-            © {{ date('Y') }} Blue Orlando. Tous droits réservés.
+            © {{ date('Y') }} Azuréa IMMO. Tous droits réservés.
         </p>
     </div>
 </footer>
