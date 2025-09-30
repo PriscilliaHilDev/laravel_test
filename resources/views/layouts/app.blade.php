@@ -25,7 +25,12 @@
         <div class="min-h-screen flex flex-col bg-gray-100 dark:bg-gray-950">
             
             {{-- Navbar --}}
-            @livewire('navigation-menu')
+           {{-- Navbar --}}
+            @if(Auth::check())
+                @livewire('navigation-menu')
+            @else
+                    <x-navbar-guest />
+            @endif
 
             <!-- Page Heading -->
             @if (isset($header))
