@@ -8,6 +8,17 @@
 
     {{-- Infos du bien --}}
     <h1 class="text-3xl font-bold mb-4">{{ $property->name }}</h1>
+
+    {{-- Image principale --}}
+    <div class="mb-6">
+       <img src="{{ $property->image_path 
+                ? asset('storage/' . $property->image_path) 
+                : asset('images/properties/default.png') }}" 
+     class="w-full h-full object-cover hover:scale-105 transition"
+     alt="{{ $property->name }}">
+
+    </div>
+
     <p class="mb-4">{{ $property->description }}</p>
     <p class="text-xl font-bold text-green-600 mb-6">
         {{ number_format($property->price_per_night, 2, ',', ' ') }} € / nuit
@@ -18,14 +29,14 @@
             {{-- Datepicker TallStackUI (mode range) --}}
             <x-ts-date
                 label="Période de séjour"
-                name="dates"                {{-- <- important pour la gestion auto des erreurs --}}
+                name="dates"
                 placeholder="Choisissez vos dates"
                 hint="Sélectionnez une période"
                 range
-                parse-format="Y-m-d"        {{-- ce que Livewire reçoit --}}
-                display-format="d/m/Y"      {{-- ce que l’utilisateur voit --}}
+                parse-format="Y-m-d"
+                display-format="d/m/Y"
                 wire:model="dates"
-                :disable="$unavailableDates"   {{-- désactive les jours réservés --}}
+                :disable="$unavailableDates"
             />
 
             {{-- Erreurs personnalisées si besoin --}}

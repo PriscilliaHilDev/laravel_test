@@ -4,12 +4,13 @@
 <section id="default-carousel" class="relative w-full h-[400px] rounded-b-3xl " data-carousel="slide">
             <div class="relative h-[400px] overflow-hidden rounded-b-3xl">
                 @for ($i = 1; $i <= 9; $i++)
-                    <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                        <img src="{{ asset('storage/slides/slide-' . $i . '.jpg') }}" 
-                             class="absolute block w-full h-full object-cover" 
-                             alt="Slide {{ $i }}">
+                     <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                        <img src="{{ asset('storage/images/slide-' . $i . '.jpg') }}" 
+                        class="absolute block w-full h-full object-cover object-center" 
+                        alt="Slide {{ $i }}">
                     </div>
                 @endfor
+
             </div>
 
             <!-- Indicators -->

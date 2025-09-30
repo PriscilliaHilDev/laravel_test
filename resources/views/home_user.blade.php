@@ -22,11 +22,11 @@
                 <section id="user-carousel" class="relative h-[300px] rounded-2xl overflow-hidden" data-carousel="slide">
                     <div class="relative h-full w-full overflow-hidden rounded-2xl">
                         @for ($i = 1; $i <= 5; $i++)
-                            <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                                <img src="{{ asset('storage/slides/slide-' . $i . '.jpg') }}" 
-                                     class="absolute block w-full h-full object-cover" 
-                                     alt="Slide {{ $i }}">
-                            </div>
+                             <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                        <img src="{{ asset('storage/images/slide-' . $i . '.jpg') }}" 
+                        class="absolute block w-full h-full object-cover object-center" 
+                        alt="Slide {{ $i }}">
+                    </div>
                         @endfor
                     </div>
                     <div class="absolute z-30 flex space-x-3 -translate-x-1/2 bottom-3 left-1/2">

@@ -19,7 +19,7 @@ class Property extends Model
         'name',
         'description',
         'price_per_night',
-        'image', // si tu ajoutes un champ image
+        'image_path',
     ];
 
     /**
